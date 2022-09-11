@@ -9,6 +9,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import CartScreen from "./screens/CartScreen";
 const  App = () => {
   return (
     <BrowserRouter>
@@ -17,8 +18,10 @@ const  App = () => {
         <main className="py-3">
          <Container>
         <Routes>
-          <Route path="/"  element={<HomeScreen />} />
+          <Route path="/"  element={<HomeScreen />} exact />
           <Route path="/product/:id"  element={<ProductScreen />} />
+          <Route path="/cart/:id" element={<CartScreen />} />
+          <Route path="/cart" element={<CartScreen />} />
         </Routes>
          </Container>
           
