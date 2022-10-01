@@ -7,17 +7,33 @@ import { applyMiddleware } from 'redux';
 import { productListReducer } from './reducers/productReducers';
 import { productDetailsReducer } from './reducers/productReducers';
 import { cartReducers  } from './reducers/cartReducers';
+import {
+    userLoginReducer,
+    userRegisterReducer,
+    userDetailsReducer,
+    userUpdateProfileReducer,
+  } from './reducers/userReducers'
 const reducer = combineReducers({
     //this is really important because this is going to
     //show as a piece of state productList
     productList:productListReducer,
     productDetails:productDetailsReducer,
     cart:cartReducers ,
+    userLogin: userLoginReducer,
+    userRegister: userRegisterReducer,
+    userDetails: userDetailsReducer,
+    userUpdateProfile: userUpdateProfileReducer,
+
 })
 
+//when we store some items in local storage we need to load them in initialState
 const cartItemsFromStorages = localStorage.getItem('cartItems')?JSON.parse(localStorage.getItem('cartItems')):[]
+const userInfoFromStorage = localStorage.getItem('userInfo')
+  ? JSON.parse(localStorage.getItem('userInfo'))
+  : null
 const initialState = {
-    cart: {cartItems: cartItemsFromStorages}
+    cart: {cartItems: cartItemsFromStorages},
+    userLogin:{ userInfo:userInfoFromStorage}
 }
 
 //The thunk can be used to delay the dispatch of an action, or to dispatch only if a certain condition is met.
