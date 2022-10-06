@@ -7,6 +7,10 @@ import ProductScreen from "./screens/ProductScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from './screens/RegisterScreen'
 import ProfileScreen from './screens/ProfileScreen'
+import ShippingScreen from './screens/ShippingScreen'
+import PaymentScreen from './screens/PaymentScreen'
+import PlaceOrderScreen from './screens/PlaceOrderScreen'
+
 import {
   BrowserRouter,
   Routes,
@@ -22,6 +26,9 @@ const  App = () => {
          <Container>
         <Routes>
           <Route path="/login" element={<LoginScreen />} />
+          <Route path="/shipping" element={<ShippingScreen />} />
+          <Route path="/payment" element={<PaymentScreen />} />
+          <Route path="/placeorder" element={<PlaceOrderScreen />} />
           <Route path='/register' element={<RegisterScreen />} />
           <Route path="/profile" element={<ProfileScreen />} />
           <Route path="/product/:id"  element={<ProductScreen />} />

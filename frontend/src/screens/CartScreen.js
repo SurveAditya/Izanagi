@@ -3,7 +3,7 @@ import { Link,useParams,useSearchParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, ListGroup, Image, Form, Button,Card } from 'react-bootstrap'
 import { addToCart , removeFromCart} from '../actions/cartActions'
-
+import { useNavigate } from "react-router-dom";
 const CartScreen = () => {
         const { id } = useParams();
         const productId = id;
@@ -13,6 +13,7 @@ const CartScreen = () => {
         const qty = searchParams.get('qty');
 
         const dispatch = useDispatch();
+        const navigate = useNavigate();
         const cart = useSelector(state => state.cart);
         const { cartItems } = cart;
         useEffect(() => {
@@ -25,7 +26,7 @@ const CartScreen = () => {
             dispatch(removeFromCart(id))
         }
         const checkoutHandler = (id) => {
-            console.log("HEYY");
+          navigate('/shipping')
         }
         return (
             <Row>

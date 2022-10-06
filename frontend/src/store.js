@@ -13,6 +13,14 @@ import {
     userDetailsReducer,
     userUpdateProfileReducer,
   } from './reducers/userReducers'
+  import {
+    orderCreateReducer,
+    // orderDetailsReducer,
+    // orderPayReducer,
+    // orderDeliverReducer,
+    // orderListMyReducer,
+    // orderListReducer,
+  } from './reducers/orderReducers'
 const reducer = combineReducers({
     //this is really important because this is going to
     //show as a piece of state productList
@@ -23,6 +31,7 @@ const reducer = combineReducers({
     userRegister: userRegisterReducer,
     userDetails: userDetailsReducer,
     userUpdateProfile: userUpdateProfileReducer,
+    orderCreate: orderCreateReducer,
 
 })
 
@@ -31,8 +40,13 @@ const cartItemsFromStorages = localStorage.getItem('cartItems')?JSON.parse(local
 const userInfoFromStorage = localStorage.getItem('userInfo')
   ? JSON.parse(localStorage.getItem('userInfo'))
   : null
+
+const shippingAddressFromStorage = localStorage.getItem('shippingAddress')
+  ? JSON.parse(localStorage.getItem('shippingAddress'))
+  : {}
+  
 const initialState = {
-    cart: {cartItems: cartItemsFromStorages},
+    cart: {cartItems: cartItemsFromStorages,shippingAddress: shippingAddressFromStorage},
     userLogin:{ userInfo:userInfoFromStorage}
 }
 

@@ -16,6 +16,7 @@ const protect = asyncHandler(async (req, res) => {
           token = req.headers.authorization.split(' ')[1]
     
           const decoded = jwt.verify(token, process.env.JWT_SECRET)
+          console.log(decoded)
           //if we console.log decoded then we will get
           //id:(whatever id the token has) iat:(issued at that is the date) exp:(expiration) 
           req.user = await User.findById(decoded.id).select('-password')
